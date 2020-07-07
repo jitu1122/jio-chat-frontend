@@ -1,0 +1,103 @@
+<div>
+    <app-header></app-header>
+</div>
+<!--<div>-->
+<!--    <div class="users-container">-->
+<!--        <div class="" *ngFor="let user of dashboardService.users" (click)="setActiveChat(user)" data-toggle="modal" data-target="#chat-window">-->
+<!--            <div class="d-flex align-items-center user-line">-->
+<!--                <div class="active-status" [ngClass]="user.online ? 'bg-success' : 'bg-danger'"></div>-->
+<!--                <div>-->
+<!--                    <p class="m-0">{{user.name}}</p>-->
+<!--                    <p  class="m-0" style="font-size: 12px" ></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="row m-0">
+    <div class="col-sm-2 p-2">
+        <div class="chat">
+            <div class="card mb-sm-3 mb-md-0 contacts_card">
+                <div class="card-header">
+                    <div class="user_title">
+                    </div>
+                </div>
+                <div class="card-body contacts_body">
+                    <ul class="contacts">
+                        <li>
+                            <div class="d-flex bd-highlight justify-content-center">
+                                <div class="img_cont">
+                                    <img src="assets/jio-tv.png" class="rounded-circle user_img">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex bd-highlight justify-content-center">
+                                <div class="img_cont">
+                                    <img src="assets/jio-cinema.png" class="rounded-circle user_img">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex bd-highlight justify-content-center">
+                                <div class="img_cont">
+                                    <img src="assets/jio-news.png" class="rounded-circle user_img">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex bd-highlight justify-content-center">
+                                <div class="img_cont">
+                                    <img src="assets/jio-saavn.png" style="border: none" class="user_img">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-10 p-2">
+        <div class="row m-0 p-3 text-center">
+            <div class="col-sm-2 option-txt">Home</div>
+            <div class="col-sm-1 option-txt">Web</div>
+            <div class="col-sm-2 option-txt">Android</div>
+            <div class="col-sm-1 option-txt">API</div>
+            <div class="col-sm-1 option-txt">iOS</div>
+            <div class="col-sm-2 option-txt">Security</div>
+            <div class="col-sm-1 option-txt">CI/CD</div>
+            <div class="col-sm-2 option-txt">Performance</div>
+        </div>
+        <div class="chat d-flex justify-content-center">
+            <div class="card mb-sm-3 mb-md-0 contacts_card" style="height: calc(100vh - 155px); min-width: 600px">
+                <div class="card-header">
+                    <div class="user_title">
+                        Active users
+                    </div>
+                </div>
+                <div class="card-body contacts_body">
+                    <ul class="contacts">
+                        <li [ngClass]="user.id == dashboardService.activeChatUser?.id? 'active' : ''" *ngFor="let user of dashboardService.users" (click)="setActiveChat(user)" data-toggle="modal" data-target="#chat-window">
+                            <div class="d-flex bd-highlight">
+                                <div class="img_cont">
+                                    <img src="assets/ui.svg" class="rounded-circle user_img">
+                                    <span class="online_icon" [ngClass]="!user.online ? 'offline' : ''"></span>
+                                </div>
+                                <div class="user_info">
+                                    <span>{{user.name}}</span>
+                                    <p *ngIf="getLastMsg(user.id)" [ngClass]="!getLastMsg(user.id)?.read? 'font-weight-bold' : ''">{{getLastMsg(user.id)?.msg | slice:0:18}} &bull; {{getLastMsg(user.id)?.time | date: 'hh:mm a'}}</p>
+                                    <p *ngIf="!getLastMsg(user.id)">{{user.online ? 'Online' : 'Offline'}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-chat-window></app-chat-window>

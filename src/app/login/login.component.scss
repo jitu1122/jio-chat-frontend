@@ -1,0 +1,46 @@
+.outer {
+  height: 100vh;
+}
+
+#hero-4 {
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 10px;
+  border: none;
+  background: #fff;
+  //-webkit-box-shadow: -3px -3px 5px 1px #FFFFFF, 3px 3px 5px 1px #e8e8f3, inset -5px -5px 5px 0px rgba(255, 255, 255, 0.26);
+  //box-shadow: -3px -3px 5px 1px #FFFFFF, 3px 3px 5px 1px #e8e8f3, inset -5px -5px 5px 0px rgba(255, 255, 255, 0.26);
+
+  img {
+    cursor: pointer;
+  }
+
+  img:focus {
+    outline: none;
+  }
+}
+
+input.form-control {
+  border: none;
+  border-radius: 0.25rem;
+  background-color: unset !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: inset 0px 0px 6px 0px #9B9B9B;
+}
+
+input.form-control.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+#hero-4 .register-form .form-control {
+  margin-bottom: 0 !important;
+}
+
+#hero-4 .register-form .form-control:focus {
+  border-color: #41abe5 !important;
+}
+.submit {
+  background-color: #2A3890 !important;
+  color: #fff;
+  width:130px
+}

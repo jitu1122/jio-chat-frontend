@@ -1,0 +1,57 @@
+<div class="outer d-flex">
+
+        <div class="text-center m-auto">
+            <div id="hero-4" class="">
+                <!--                            <h4>Get Started</h4>-->
+                <form [formGroup]="signUpForm" name="registerform" (ngSubmit)="onSubmit()" class="row register-form">
+
+                    <!-- Title -->
+                    <div class="col-md-12 mb-20 text-center">
+                        <img src="assets/jio-logo.png" height="130px" width="130px" routerLink="/" alt="">
+                    </div>
+
+                    <!-- Form Input -->
+                    <div class="col-md-12">
+                        <p class="text-center mt-3">Create your account </p>
+                    </div>
+                    <!-- Form Input -->
+                    <div class="col-md-12 mb-3">
+                        <input formControlName="fullname" class="form-control name" type="text" name="name" placeholder="Enter your name" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }"/>
+                        <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                            <div *ngIf="f.fullname.errors.required">Name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- Form Input -->
+                    <div class="col-md-12 mb-3">
+                        <input formControlName="username" class="form-control email" type="text" placeholder="Enter your username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">Username is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- Form Input -->
+                    <div class="col-md-12 mb-3">
+                        <input formControlName="password" class="form-control phone" type="password" name="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- Form Submit Button -->
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-md submit">Register</button>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p class="text-info" style="cursor: pointer" routerLink="/login">Already have account? Click to sign in.</p>
+                    </div>
+
+                    <!-- Form Message -->
+                    <div class="contact-form-msg text-center">
+                        <span class="loading"></span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+</div>
