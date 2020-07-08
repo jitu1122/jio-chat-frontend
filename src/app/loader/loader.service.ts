@@ -22,9 +22,9 @@ export class LoaderService {
           if (this.requestQueue.indexOf(event.route.path) < 0) {
             this.requestSent(event.route.path);
           }
-          console.log('loading chunk: ', event.route.path);
+          // console.log('loading chunk: ', event.route.path);
         } else if (event instanceof RouteConfigLoadEnd) {
-          console.log('loaded chunk :', event.route.path);
+          // console.log('loaded chunk :', event.route.path);
           this.responseReceived(event.route.path);
         }
       }

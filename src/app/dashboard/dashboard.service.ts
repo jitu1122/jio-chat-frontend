@@ -32,6 +32,14 @@ export class DashboardService {
     this.socket.on('user_reset', function() {
       thisVar.socket.emit('set_available', thisVar.user.userData.id);
     }.bind(this));
+    this.socket.on('user_status', function(user) {
+      const alert = document.createElement('div');
+      alert.classList.add('alert', 'alert-success', 'alert-dismissible');
+      alert.innerHTML = '<button id="' + user.name.replace(' ', '') + '" type="button" class="close" data-dismiss="alert">&times;</button>\n' +
+        '    <strong>' + user.name + '</strong> has logged ' + user.status  + '.';
+      document.getElementById('alerts').append(alert);
+      setTimeout(() => document.getElementById(user.name.replace(' ', '')).click(), 4000);
+    }.bind(this));
     // available_users
     this.socket.emit('available_users');
     this.socket.on('chat-users', function(data) {
@@ -39,7 +47,7 @@ export class DashboardService {
       Object.keys(data).map((r: any) => {
         thisVar.users.push({id: r, name: data[r].name, online: data[r].online});
       });
-      console.log(thisVar.users);
+      // console.log(thisVar.users);
     }.bind(this));
 
   }
