@@ -61,6 +61,7 @@ export class DashboardService {
 
   logout() {
     this.user.userData = null;
+    this.chatData = null;
     sessionStorage.clear();
     this.socket.disconnect();
     this.router.navigate(['login']);
