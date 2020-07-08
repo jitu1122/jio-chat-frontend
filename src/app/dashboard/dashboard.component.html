@@ -1,19 +1,6 @@
 <div>
     <app-header></app-header>
 </div>
-<!--<div>-->
-<!--    <div class="users-container">-->
-<!--        <div class="" *ngFor="let user of dashboardService.users" (click)="setActiveChat(user)" data-toggle="modal" data-target="#chat-window">-->
-<!--            <div class="d-flex align-items-center user-line">-->
-<!--                <div class="active-status" [ngClass]="user.online ? 'bg-success' : 'bg-danger'"></div>-->
-<!--                <div>-->
-<!--                    <p class="m-0">{{user.name}}</p>-->
-<!--                    <p  class="m-0" style="font-size: 12px" ></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <div class="row m-0">
     <div class="col-sm-2 p-2">
         <div class="chat">
@@ -24,31 +11,31 @@
                 </div>
                 <div class="card-body contacts_body">
                     <ul class="contacts">
-                        <li>
+                        <li style="margin-bottom: 3rem !important;">
                             <div class="d-flex bd-highlight justify-content-center">
                                 <div class="img_cont">
-                                    <img src="assets/jio-tv.png" class="rounded-circle user_img">
+                                    <img class="rounded-circle user_img" src="assets/jio-tv.png">
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li style="margin-bottom: 3rem !important;">
                             <div class="d-flex bd-highlight justify-content-center">
                                 <div class="img_cont">
-                                    <img src="assets/jio-cinema.png" class="rounded-circle user_img">
+                                    <img class="rounded-circle user_img" src="assets/jio-cinema.png">
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li style="margin-bottom: 3rem !important;">
                             <div class="d-flex bd-highlight justify-content-center">
                                 <div class="img_cont">
-                                    <img src="assets/jio-news.png" class="rounded-circle user_img">
+                                    <img class="rounded-circle user_img" src="assets/jio-news.png">
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li style="margin-bottom: 3rem !important;">
                             <div class="d-flex bd-highlight justify-content-center">
                                 <div class="img_cont">
-                                    <img src="assets/jio-saavn.png" style="border: none" class="user_img">
+                                    <img class="user_img" src="assets/jio-saavn.png" style="border: none">
                                 </div>
                             </div>
                         </li>
@@ -61,14 +48,30 @@
     </div>
     <div class="col-sm-10 p-2">
         <div class="row m-0 p-3 text-center">
-            <div class="col-sm-2 option-txt">Home</div>
-            <div class="col-sm-1 option-txt">Web</div>
-            <div class="col-sm-2 option-txt">Android</div>
-            <div class="col-sm-1 option-txt">API</div>
-            <div class="col-sm-1 option-txt">iOS</div>
-            <div class="col-sm-2 option-txt">Security</div>
-            <div class="col-sm-1 option-txt">CI/CD</div>
-            <div class="col-sm-2 option-txt">Performance</div>
+            <div class="col-sm-2">
+                <div class="option-txt">Home</div>
+            </div>
+            <div class="col-sm-1">
+                <div class="option-txt">Web</div>
+            </div>
+            <div class="col-sm-2">
+                <div class="option-txt">Android</div>
+            </div>
+            <div class="col-sm-1">
+                <div class="option-txt">API</div>
+            </div>
+            <div class="col-sm-1">
+                <div class="option-txt">iOS</div>
+            </div>
+            <div class="col-sm-2">
+                <div class="option-txt">Security</div>
+            </div>
+            <div class="col-sm-1">
+                <div class="option-txt">CI/CD</div>
+            </div>
+            <div class="col-sm-2">
+                <div class="option-txt">Performance</div>
+            </div>
         </div>
         <div class="chat d-flex justify-content-center">
             <div class="card mb-sm-3 mb-md-0 contacts_card" style="height: calc(100vh - 155px); min-width: 600px">
@@ -79,15 +82,19 @@
                 </div>
                 <div class="card-body contacts_body">
                     <ul class="contacts">
-                        <li [ngClass]="user.id == dashboardService.activeChatUser?.id? 'active' : ''" *ngFor="let user of dashboardService.users" (click)="setActiveChat(user)" data-toggle="modal" data-target="#chat-window">
+                        <li (click)="setActiveChat(user)"
+                            *ngFor="let user of dashboardService.users" [ngClass]="user.id == dashboardService.activeChatUser?.id? 'active' : ''"
+                            data-target="#chat-window" data-toggle="modal">
                             <div class="d-flex bd-highlight">
                                 <div class="img_cont">
-                                    <img src="assets/ui.svg" class="rounded-circle user_img">
-                                    <span class="online_icon" [ngClass]="!user.online ? 'offline' : ''"></span>
+                                    <img class="rounded-circle user_img" src="assets/ui.svg">
+                                    <span [ngClass]="!user.online ? 'offline' : ''" class="online_icon"></span>
                                 </div>
                                 <div class="user_info">
                                     <span>{{user.name}}</span>
-                                    <p *ngIf="getLastMsg(user.id)" [ngClass]="!getLastMsg(user.id)?.read? 'font-weight-bold' : ''">{{getLastMsg(user.id)?.msg | slice:0:18}} &bull; {{getLastMsg(user.id)?.time | date: 'hh:mm a'}}</p>
+                                    <p *ngIf="getLastMsg(user.id)"
+                                       [ngClass]="!getLastMsg(user.id)?.read? 'font-weight-bold' : ''">{{getLastMsg(user.id)?.msg | slice:0:18}}
+                                        &bull; {{getLastMsg(user.id)?.time | date: 'hh:mm a'}}</p>
                                     <p *ngIf="!getLastMsg(user.id)">{{user.online ? 'Online' : 'Offline'}}</p>
                                 </div>
                             </div>

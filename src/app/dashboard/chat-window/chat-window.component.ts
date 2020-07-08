@@ -10,10 +10,12 @@ export class ChatWindowComponent implements OnInit {
   @ViewChild('close', {static: false})
   public close: ElementRef;
 
-  constructor(public dashboardService: DashboardService) { }
+  constructor(public dashboardService: DashboardService) {
+  }
 
   ngOnInit(): void {
   }
+
   getMsg() {
     if (this.dashboardService.chatData && this.dashboardService.activeChatUser &&
       this.dashboardService.chatData.hasOwnProperty(this.dashboardService.activeChatUser.id)) {

@@ -1,52 +1,57 @@
 <div class="outer d-flex">
 
-        <div class="text-center m-auto">
-            <div id="hero-4" class="">
-                <!--                            <h4>Get Started</h4>-->
-                <form [formGroup]="signInForm" name="registerform" (ngSubmit)="onSubmit()" class="row register-form">
+    <div class="text-center m-auto">
+        <div class="" id="hero-4">
+            <!--                            <h4>Get Started</h4>-->
+            <form (ngSubmit)="onSubmit()" [formGroup]="signInForm" class="row register-form" name="registerform">
 
-                    <!-- Title -->
-                    <div class="col-md-12 mb-20 text-center">
-                        <img src="assets/jio-logo.png" height="130px" width="130px" routerLink="/" alt="">
-                    </div>
+                <!-- Title -->
+                <div class="col-md-12 mb-20 text-center">
+                    <img alt="" height="130px" routerLink="/" src="assets/jio-logo.png" width="130px">
+                </div>
 
-                    <!-- Form Input -->
-                    <div class="col-md-12">
-                        <p class="text-center mt-3">Login</p>
+                <!-- Form Input -->
+                <div class="col-md-12">
+                    <p class="text-center mt-3">Login</p>
+                </div>
+                <!-- Form Input -->
+                <div class="col-md-12 mb-3">
+                    <input [ngClass]="{ 'is-invalid': submitted && f.username.errors }" class="form-control email" formControlName="username" name="username"
+                           placeholder="Enter your username"
+                           type="text">
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required.</div>
                     </div>
-                    <!-- Form Input -->
-                    <div class="col-md-12 mb-3">
-                        <input formControlName="username" class="form-control email" type="text" name="username" placeholder="Enter your username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                            <div *ngIf="f.username.errors.required">Username is required.</div>
-                        </div>
-                    </div>
+                </div>
 
-                    <!-- Form Input -->
-                    <div class="col-md-12 mb-3">
-                        <input formControlName="password" class="form-control phone" type="password" name="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Password is required.</div>
-                        </div>
+                <!-- Form Input -->
+                <div class="col-md-12 mb-3">
+                    <input [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="form-control phone" formControlName="password" name="password"
+                           placeholder="Password" type="password">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required.</div>
                     </div>
+                </div>
 
-                    <!-- Form Submit Button -->
-                    <div class="col-md-12 mb-2">
-                        <p class="text-info d-flex align-items-center justify-content-center" style="font-size: 12px"><input formControlName="remember" type="checkbox" class="mr-2"> Remember me</p>
-                    </div>
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-md submit">Sign in</button>
-                    </div>
-                    <div class="col-md-12 mt-2">
-                        <p class="text-info" style="cursor: pointer" routerLink="/signup">Or click here to create an account with us</p>
-                    </div>
+                <!-- Form Submit Button -->
+                <div class="col-md-12 mb-2">
+                    <p class="text-info d-flex align-items-center justify-content-center" style="font-size: 12px"><input
+                            class="mr-2" formControlName="remember" type="checkbox"> Remember me</p>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn btn-md submit" type="submit">Sign in</button>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <p class="text-info" routerLink="/signup" style="cursor: pointer">Or click here to create an account
+                        with us</p>
+                </div>
 
-                    <!-- Form Message -->
-                    <div class="contact-form-msg text-center">
-                        <span class="loading"></span>
-                    </div>
+                <!-- Form Message -->
+                <div class="contact-form-msg text-center">
+                    <span class="loading"></span>
+                </div>
 
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
 </div>

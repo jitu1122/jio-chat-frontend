@@ -1,73 +1,48 @@
-<div class="modal fade" id="chat-window" data-keyboard="false" data-backdrop="static">
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="chat-window">
     <div class="modal-dialog">
         <div class="modal-content card">
-<!--            <div class="modal-header align-items-center">-->
-<!--                <div class="active-status" [ngClass]="dashboardService.activeChatUser?.online ? 'bg-success' : 'bg-danger'"></div>-->
-<!--                <h1 class="modal-title">{{dashboardService.activeChatUser?.name | titlecase}} <span style="font-size: 12px">({{dashboardService.activeChatUser?.online ? 'Online' : 'Offline'}})</span></h1>-->
-<!--                <button #close type="button" class="close" data-dismiss="modal">&times;</button>-->
-<!--            </div>-->
-<!--&lt;!&ndash;            <button #close type="button" class="close" data-dismiss="modal">&times;</button>&ndash;&gt;-->
-
-<!--            &lt;!&ndash; Modal body &ndash;&gt;-->
-<!--            <div class="modal-body pt-0 pb-0">-->
-<!--                <div class="modal-body-inner">-->
-<!--                    <div class="messages">-->
-<!--                        <div class="d-flex flex-column" *ngFor="let msg of getMsg()">-->
-<!--                            <div class="text-message" [ngClass]="msg.senderChatID == dashboardService.activeChatUser.id? 'ml-0 mr-auto text-left' : 'mr-0 ml-auto text-right'">-->
-<!--                                <div>-->
-<!--                                    {{msg.content}}-->
-<!--                                </div>-->
-<!--                                <div style="font-size: 10px">-->
-<!--                                    {{msg.time | date: 'hh:mm a'}}-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="d-flex align-items-center">-->
-<!--                        <textarea [(ngModel)]="dashboardService.msgData.content" id="message-box" rows="2"></textarea>-->
-<!--                        <img (click)="dashboardService.sendMessage()" class="m-auto send-button" height="50" width="50" src="assets/send.svg" alt="">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-                <div class="card-header msg_head">
-                    <div class="d-flex bd-highlight">
-                        <div class="img_cont">
-                            <img src="assets/ui.svg" class="rounded-circle user_img">
-                            <span class="online_icon" [ngClass]="!dashboardService.activeChatUser?.online ? 'offline' : ''"></span>
-                        </div>
-                        <div class="user_info">
-                            <span>{{dashboardService.activeChatUser?.name | titlecase}}</span>
-                            <p>{{dashboardService.activeChatUser?.online ? 'Online' : 'Offline'}}</p>
-                        </div>
+            <div class="card-header msg_head">
+                <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                        <img class="rounded-circle user_img" src="assets/ui.svg">
+                        <span [ngClass]="!dashboardService.activeChatUser?.online ? 'offline' : ''"
+                              class="online_icon"></span>
                     </div>
-                    <span id="action_menu_btn" #close class="close" data-dismiss="modal"><i class="fas fa-times"></i></span>
-                </div>
-                <div class="card-body msg_card_body">
-                    <div class="d-flex justify-content-start mb-4" *ngFor="let msg of getMsg()" [ngClass]="msg.senderChatID == dashboardService.activeChatUser.id? 'justify-content-start' : 'justify-content-end'">
-                        <div *ngIf="msg.senderChatID == dashboardService.activeChatUser.id" class="img_cont_msg">
-                            <img src="assets/ui.svg" class="rounded-circle user_img_msg">
-                        </div>
-                        <div [ngClass]="msg.senderChatID == dashboardService.activeChatUser.id? 'msg_cotainer' : 'msg_cotainer_send'">
-                            {{msg.content}}
-                            <span [ngClass]="msg.senderChatID == dashboardService.activeChatUser.id? 'msg_time' : 'msg_time_send'">{{msg.time | date: 'hh:mm a, dd MMM'}}</span>
-                        </div>
-                        <div *ngIf="msg.senderChatID != dashboardService.activeChatUser.id" class="img_cont_msg">
-                            <img src="assets/ui.svg" class="rounded-circle user_img_msg">
-                        </div>
+                    <div class="user_info">
+                        <span>{{dashboardService.activeChatUser?.name | titlecase}}</span>
+                        <p>{{dashboardService.activeChatUser?.online ? 'Online' : 'Offline'}}</p>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <span class="input-group-text attach_btn"> &nbsp;</span>
-                        </div>
-                        <textarea [(ngModel)]="dashboardService.msgData.content" class="form-control type_msg" placeholder="Type your message..."></textarea>
-                        <div class="input-group-append" (click)="dashboardService.sendMessage()">
-                            <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
-                        </div>
+                <span #close class="close" data-dismiss="modal" id="action_menu_btn"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="card-body msg_card_body">
+                <div *ngFor="let msg of getMsg()" [ngClass]="msg.senderChatID == dashboardService.activeChatUser.id? 'justify-content-start' : 'justify-content-end'"
+                     class="d-flex justify-content-start mb-4">
+                    <div *ngIf="msg.senderChatID == dashboardService.activeChatUser.id" class="img_cont_msg">
+                        <img class="rounded-circle user_img_msg" src="assets/ui.svg">
+                    </div>
+                    <div [ngClass]="msg.senderChatID == dashboardService.activeChatUser.id? 'msg_cotainer' : 'msg_cotainer_send'">
+                        {{msg.content}}
+                        <span [ngClass]="msg.senderChatID == dashboardService.activeChatUser.id? 'msg_time' : 'msg_time_send'">{{msg.time | date: 'hh:mm a, dd MMM'}}</span>
+                    </div>
+                    <div *ngIf="msg.senderChatID != dashboardService.activeChatUser.id" class="img_cont_msg">
+                        <img class="rounded-circle user_img_msg" src="assets/ui.svg">
                     </div>
                 </div>
             </div>
+            <div class="card-footer">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <span class="input-group-text attach_btn"> &nbsp;</span>
+                    </div>
+                    <textarea [(ngModel)]="dashboardService.msgData.content" class="form-control type_msg"
+                              placeholder="Type your message..."></textarea>
+                    <div (click)="dashboardService.sendMessage()" class="input-group-append">
+                        <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

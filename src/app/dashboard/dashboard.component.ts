@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DashboardService} from './dashboard.service';
 
 @Component({
@@ -8,11 +8,13 @@ import {DashboardService} from './dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public dashboardService: DashboardService) { }
+  constructor(public dashboardService: DashboardService) {
+  }
 
   ngOnInit(): void {
     this.dashboardService.setSocket();
   }
+
   setActiveChat(user) {
     this.dashboardService.activeChatUser = user;
     if (this.dashboardService.chatData && this.dashboardService.chatData[user.id] && this.dashboardService.chatData[user.id].length > 0) {
@@ -27,14 +29,17 @@ export class DashboardComponent implements OnInit {
 
     }
   }
+
   getLastMsg(id) {
     if (this.dashboardService.chatData && this.dashboardService.chatData[id] && this.dashboardService.chatData[id].length > 0) {
       let i = this.dashboardService.chatData[id].length - 1;
       while (i > -1) {
         if (this.dashboardService.chatData[id][i].senderChatID === id) {
-          return {read: this.dashboardService.chatData[id][i].read,
+          return {
+            read: this.dashboardService.chatData[id][i].read,
             msg: this.dashboardService.chatData[id][i].content,
-            time: this.dashboardService.chatData[id][i].time};
+            time: this.dashboardService.chatData[id][i].time
+          };
         }
         i--;
       }

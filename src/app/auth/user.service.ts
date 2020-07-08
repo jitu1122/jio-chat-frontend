@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {API_ROOT} from '../app.constants';
 import {tap} from 'rxjs/operators';
@@ -12,7 +12,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
   registerUser(userData: any): Observable<any> {
     userData.password_confirmation = userData.password;
@@ -23,9 +24,11 @@ export class UserService {
       }
     }));
   }
+
   isAuthenticated(): boolean {
     return this.userData && new Date() <= new Date(this.userData.expires_at);
   }
+
   loginUser(userData: any): Observable<any> {
     return this.http.post(`${API_ROOT}/user/login`, userData).pipe(tap((res: any) => {
       if (res && res.token) {
@@ -34,12 +37,15 @@ export class UserService {
       }
     }));
   }
+
   getStorage(key) {
     return JSON.parse(sessionStorage.getItem(key));
   }
+
   setStorage(key, value) {
     sessionStorage.setItem(key, JSON.stringify(value));
   }
+
   sendMessage(msgData) {
     return this.http.post(`${API_ROOT}/auth/send-email`, msgData).pipe(tap((res: any) => {
       if (res && res.success) {

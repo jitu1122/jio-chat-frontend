@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../auth/user.service';
+
 // import {UserService} from '../auth/user.service';
 
 @Component({
@@ -17,7 +18,12 @@ export class SignUpComponent implements OnInit {
     public router: Router,
     private formBuilder: FormBuilder,
     private user: UserService
-  ) { }
+  ) {
+  }
+
+  get f() {
+    return this.signUpForm.controls;
+  }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -26,7 +32,6 @@ export class SignUpComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-  get f() { return this.signUpForm.controls; }
 
   onSubmit() {
     this.submitted = true;

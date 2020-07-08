@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DashboardService} from '../dashboard.service';
 
 @Component({
@@ -8,7 +8,8 @@ import {DashboardService} from '../dashboard.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dashboardService: DashboardService) { }
+  constructor(public dashboardService: DashboardService) {
+  }
 
   ngOnInit(): void {
   }
