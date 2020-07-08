@@ -10,7 +10,6 @@
 }
 
 .card {
-  height: calc(100vh - 100px);
   border-radius: 15px !important;
   background-color: rgba(0, 0, 0, 0.4) !important;
 }
@@ -265,5 +264,18 @@
 @media(max-width: 576px) {
   .contacts_card {
     margin-bottom: 15px !important;
+  }
+}
+@media (min-width: 992px) {
+  .card {
+    height: calc(100vh - 100px);
+  }
+  .chat-main {
+    display: flex;
+    justify-content: center;
+  }
+  .main-cont {
+    height: calc(100vh - 155px);
+    min-width: 600px;
   }
 }
