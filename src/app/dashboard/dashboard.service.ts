@@ -26,16 +26,15 @@ export class DashboardService {
   setSocket() {
     this.socket = io(API_ROOT + '?token=' + this.user.userData.token);
     const thisVar = this;
-    this.socket.on('receive_message', function (data) {
+    this.socket.on('receive_message', function(data) {
       thisVar.addMsg(data.senderChatID, data);
-      console.log(thisVar.chatData);
     }.bind(this));
-    this.socket.on('user_reset', function () {
+    this.socket.on('user_reset', function() {
       thisVar.socket.emit('set_available', thisVar.user.userData.id);
     }.bind(this));
     // available_users
     this.socket.emit('available_users');
-    this.socket.on('chat-users', function (data) {
+    this.socket.on('chat-users', function(data) {
       thisVar.users = [];
       Object.keys(data).map((r: any) => {
         thisVar.users.push({id: r, name: data[r].name, online: data[r].online});
@@ -51,7 +50,6 @@ export class DashboardService {
     this.socket.emit('send_message', thisVar.msgData);
     thisVar.addMsg(this.activeChatUser.id, Object.assign({}, this.msgData));
     this.msgData.content = '';
-    console.log(this.chatData);
   }
 
   addMsg(user, data) {
@@ -64,6 +62,7 @@ export class DashboardService {
   logout() {
     this.user.userData = null;
     sessionStorage.clear();
+    this.socket.disconnect();
     this.router.navigate(['login']);
   }
 }

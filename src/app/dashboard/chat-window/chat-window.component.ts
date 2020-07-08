@@ -15,13 +15,22 @@ export class ChatWindowComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onKeyPress(event) {
+    if (event.key === 'Enter' || event.code === 'Enter' || event.keyCode === 13) {
+      if (this.dashboardService.msgData.content !== '') {
+        this.dashboardService.sendMessage();
+      }
+    }
+  }
   getMsg() {
     if (this.dashboardService.chatData && this.dashboardService.activeChatUser &&
       this.dashboardService.chatData.hasOwnProperty(this.dashboardService.activeChatUser.id)) {
       return this.dashboardService.chatData[this.dashboardService.activeChatUser.id];
     }
     return [];
+  }
+  scrollOnUpdate() {
+    document.getElementById('message-box').scroll(0, document.getElementById('message-box').scrollHeight);
   }
 
 }
