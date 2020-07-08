@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  endpoint: 'http://localhost:4000'
+  endpoint: 'https://jio-chat-backend.herokuapp.com'
 };
